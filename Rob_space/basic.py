@@ -9,6 +9,7 @@ import numpy as np
 import plotly.offline as pyo
 import plotly.graph_objs as go
 import pandas as pd
+import plotly.express as px
 
 
 
@@ -115,4 +116,23 @@ data = [go.Scatter(
             mode="lines",
             name=name) for name in df2.index]
 
-pyo.plot(data, filename="lineplot_real_data.html")
+# pyo.plot(data, filename="lineplot_real_data.html")
+
+
+
+## Line charts exercise
+#### Develop chart
+
+
+#### Import and working with data
+df_yaz = pd.read_csv("../Data/2010YumaAZ.csv")
+
+
+#### Creating plot
+fig = px.line(
+    x=df_yaz["LST_TIME"],
+    y=df_yaz["T_HR_AVG"],
+    color=df_yaz["DAY"],
+)
+
+pyo.plot(fig, filename="line_chart_exercise.html")

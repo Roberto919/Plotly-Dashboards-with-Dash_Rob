@@ -210,3 +210,30 @@ layout = go.Layout(title="Bar exercise - Horizontal", barmode="stack")
 fig = go.Figure(data=data, layout=layout)
 
 # pyo.plot(fig, filename="bar_exercise_horizontal.html")
+
+
+
+## Bubble chart
+
+df_bbl = pd.read_csv("../Data/mpg.csv")
+
+# print(df_bbl.head())
+
+data = [go.Scatter(
+        x=df_bbl["horsepower"],
+        y=df_bbl["mpg"],
+        text=df_bbl["name"],
+        mode="markers",
+        marker={
+            "size": df_bbl["weight"]/100,
+            "color": df_bbl["cylinders"],
+            "showscale": True
+        },
+    )
+]
+
+layout = go.Layout(title="Bubble chart")
+
+fig = go.Figure(data=data, layout=layout)
+
+# pyo.plot(fig, filename="bubble_chart.html")

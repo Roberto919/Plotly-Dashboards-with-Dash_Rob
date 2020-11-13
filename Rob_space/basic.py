@@ -168,4 +168,45 @@ data = [trace1, trace2, trace3]
 
 layout = go.Layout(title="Medals", barmode="stack") ## Barmode is the option to switch between stacked or nested.
 fig = go.Figure(data=data, layout=layout)
-pyo.plot(fig, filename="bar_medals.html")
+# pyo.plot(fig, filename="bar_medals.html")
+
+
+
+## Bar chart exercise
+
+df_bar_ex = pd.read_csv("../Data/mocksurvey.csv")
+df_bar_ex.set_index("Unnamed: 0", inplace=True)
+
+
+#### Vertical bar chart
+
+data = [go.Bar(
+    x=df_bar_ex.index,
+    y=df_bar_ex.loc[:, col],
+    name=col,
+    )
+for col in df_bar_ex.columns]
+
+layout = go.Layout(title="Bar exercise - Vertical", barmode="stack")
+
+fig = go.Figure(data=data, layout=layout)
+
+# pyo.plot(fig, filename="bar_exercise_vertical.html")
+
+
+#### Horizontal bar chart
+
+data = [
+    go.Bar(
+        x=df_bar_ex.loc[:, col],
+        y=df_bar_ex.index,
+        name=col,
+        orientation="h"
+    )
+for col in df_bar_ex.columns]
+
+layout = go.Layout(title="Bar exercise - Horizontal", barmode="stack")
+
+fig = go.Figure(data=data, layout=layout)
+
+# pyo.plot(fig, filename="bar_exercise_horizontal.html")

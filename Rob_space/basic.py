@@ -10,6 +10,7 @@ import plotly.offline as pyo
 import plotly.graph_objs as go
 import pandas as pd
 import plotly.express as px
+import plotly.figure_factory as ff
 
 
 
@@ -237,3 +238,61 @@ layout = go.Layout(title="Bubble chart")
 fig = go.Figure(data=data, layout=layout)
 
 # pyo.plot(fig, filename="bubble_chart.html")
+
+
+
+## Box plot chart
+
+#### Data
+y = [1,14,14,15,16,18,18,19,19,20,20,23,24,26,27,27,28,29,33,54]
+
+
+#### Box plot
+
+data = [
+    go.Box(
+        y=y,
+        boxpoints="all",
+        jitter=0.3,
+        pointpos=2.0
+    )
+]
+
+# pyo.plot(data, filename="boxplot_tutorial.html")
+
+
+
+## Box plot excercise
+
+df_bpe = pd.read_csv("../Data/abalone.csv")
+
+df_bpe1 = np.random.choice(df_bpe["rings"], 10, replace=False)
+df_bpe2 = np.random.choice(df_bpe["rings"], 10, replace=False)
+
+data = [
+    go.Box(
+        y=df_bpe1,
+        name="sample_1"
+    ),
+    go.Box(
+        y=df_bpe2,
+        name="sample_2"
+    )
+]
+
+# pyo.plot(data, filename="boxplot_ex.html")
+
+
+
+## Distplots - tutprial
+
+x1 = np.random.randn(200) - 2
+x2 = np.random.randn(200)
+x3 = np.random.randn(200) + 2
+x4 = np.random.randn(200) + 4
+
+hist_data = [x1, x2, x3, x4]
+group_labels = ["X1", "X2", "X3", "X4"]
+
+fig = ff.create_distplot(hist_data, group_labels, bin_size=[0.2, 0.1, 0.3, 0.4])
+pyo.plot(fig, filename="distplot_tut.html")

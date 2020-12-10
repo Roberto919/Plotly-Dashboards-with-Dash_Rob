@@ -1,4 +1,4 @@
-##
+## CODE FOR OLD FAITHFUL DASHBOARD EXERCISE.
 
 
 
@@ -56,7 +56,13 @@ fig_sc = go.Figure(
     layout=layout
 )
 
+# fig_sc.update_layout(
+#     title="Old Faithful Eruption Intervals vs. Durations",
+# )
+
 # pyo.plot(fig_sc)
+
+# fig_sc.show()
 
 
 
@@ -72,10 +78,7 @@ app.layout = html.Div(
     [
         dcc.Graph(
             id="Scatter_old_faithful",
-            figure={
-                "data": data,
-                "layout": layout
-            }
+            figure=fig_sc
         )
     ]
 )

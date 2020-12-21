@@ -130,5 +130,6 @@ def callback_image(selectedData):
 ## Main execution function ##
 #############################
 
+
 if __name__ == "__main__":
     app.run_server()

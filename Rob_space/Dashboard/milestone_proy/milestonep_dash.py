@@ -77,7 +77,8 @@ app.layout = html.Div( ## Master div
                         dcc.Dropdown(
                             id="select_stock",
                             options=[{"label": cmp, "value": tickers_base[cmp]["symbol"]} for cmp in tickers_base],
-                            value="TSLA"
+                            value=["TSLA", "GE"],
+                            multi=True
                         )
                     ],
                     style={

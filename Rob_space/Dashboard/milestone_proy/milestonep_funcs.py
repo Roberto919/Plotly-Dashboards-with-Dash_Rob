@@ -44,28 +44,29 @@ from milestonep_params import (
 
 
 ## Creating stock prices graph
-def stock_graph(company_sym, datareader_api, start, end):
+def stock_graph(companies_sym, datareader_api, start, end):
     """
     """
-
-    ## Getting the company symbol
-    # company_sym = tickers_base[company]["symbol"]
-
-    ## Getting closing stock price from data
-    df_cstock = data.DataReader(company_sym, datareader_api, start, end)["Close"]
 
     ## Creating graph
     fig = go.Figure()
 
-    fig.add_trace(
-        go.Scatter(
-            x=df_cstock.index,
-            y=df_cstock
-        )
-    )
+    for company_sym in companies_sym:
 
+        ## Getting closing stock price from data
+        df_cstock = data.DataReader(company_sym, datareader_api, start, end)["Close"]
+
+        fig.add_trace(
+            go.Scatter(
+                x=df_cstock.index,
+                y=df_cstock,
+                name=company_sym
+            )
+        )
+
+    sel_companies_string = "".join(c if companies_sym.index(c) + 1 == len(companies_sym) else c + ", " for c in companies_sym)
     fig.update_layout(
-        title=company_sym + " Closing Prices"
+        title=sel_companies_string + " Closing Prices"
     )
 
     return fig

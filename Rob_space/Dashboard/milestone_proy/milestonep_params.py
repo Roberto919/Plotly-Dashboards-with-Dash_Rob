@@ -35,7 +35,7 @@ datareader_api = "yahoo"
 
 
 ## Stock graph base params
-def_company = "TSLA"
+def_company = ["TSLA", "AMZN"]
 def_start = date(2015, 1, 1)
 def_end = date(2020, 12, 1)
 

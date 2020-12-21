@@ -12,13 +12,13 @@
 
 ## Standard library imports
 
+from datetime import date
+
 
 ## Third party imports
 
 
 ## Local application imports
-
-from datetime import date
 
 
 
@@ -35,9 +35,24 @@ datareader_api = "yahoo"
 
 
 ## Stock graph base params
-def_company = "TSLA Tesla, Inc."
+def_company = "TSLA"
 def_start = date(2015, 1, 1)
 def_end = date(2020, 12, 1)
+
+
+
+
+
+"------------------------------------------------------------------------------"
+###############################
+## Dashboard base parameters ##
+###############################
+
+
+## Base text in dashobard
+dash_title = "# Stock Ticker Dashboard"
+dash_stock_sel = "Select stock symbols:"
+dash_date_sel = "Select start and end dates:"
 
 
 

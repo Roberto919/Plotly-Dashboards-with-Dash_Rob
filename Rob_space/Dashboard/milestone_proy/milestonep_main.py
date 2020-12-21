@@ -22,16 +22,11 @@ import pandas as pd
 
 ## Local application imports
 
-from milestonep_params import (
-    datareader_api,
-    def_company,
-    def_start,
-    def_end,
-)
-
 from milestonep_funcs import (
     stock_graph
 )
+
+from milestonep_dash import app
 
 
 
@@ -49,9 +44,10 @@ def orch_func():
     """
 
     ## Creating stock prices graph
-    fig_cstock = stock_graph(def_company, datareader_api, def_start, def_end)
-
-    pyo.plot(fig_cstock)
+    # fig_cstock = stock_graph(def_company, datareader_api, def_start, def_end)
+    #
+    # pyo.plot(fig_cstock)
+    app.run_server()
 
 
 
